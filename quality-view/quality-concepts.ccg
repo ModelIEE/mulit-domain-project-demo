@@ -11,6 +11,14 @@ Attribute cycle_time {
     unit: "sec"
 }
 
+Attribute cycle_time2 {
+    name: "cycle_time"
+    defaultValue: "0"
+    type: "Integer"
+    unit: "sec"
+}
+
+
 Attribute req_torque {
     name: "req_torque"
     defaultValue: '0'
