@@ -1,0 +1,72 @@
+ID MechanicalConcepts {
+    name: "Mechanical Engineering"
+    version: 1.0.0
+}
+
+// Mechanical Attributes
+Attribute pos_accuracy {
+    name: "pos_Accuracy"
+    defaultValue: "0"
+    type: "Integer"
+    unit: "mm"
+}
+
+Attribute torque {
+    name: "torque"
+    defaultValue: "0"
+    type: "Integer"
+    unit: "mm"
+}
+
+Attribute bitType {
+    name: "bit_type"
+    defaultValue: "PH2"
+    type: "String"
+    unit: ""
+}
+
+// Process
+Concept c_m_position_screw_dashboard {
+    name: "Position Screw & Dashboard"
+    attributes: pos_accuracy
+}
+
+Concept c_m_fasten_screw {
+    name: "Fasten Screw"
+}
+
+// Resource
+Concept c_m_transportResource {
+    name: "Transport Resource"
+}
+
+Concept c_m_positioningCell {
+    name: "Positioning Cell"
+}
+
+Concept c_m_robot {
+    name: "Robot"
+    attributes: pos_accuracy
+}
+
+Concept c_m_electricScrewdriver {
+    name: "Electrical Screwdriver"
+    attributes: torque
+}
+
+Concept c_m_drive1 {
+    name: "Drive 1"
+}
+
+Concept c_m_drive2 {
+    name: "Drive 2"
+}
+
+Concept c_m_drive3 {
+    name: "Drive 2"
+}
+
+Concept c_m_bit {
+    name: "Drive 2"
+    attributes: bitType
+}

@@ -1,0 +1,15 @@
+ID ResourcesLib
+
+Resource Screwdriver {
+    name: "Screwdriver"
+}
+
+Attribute heat {
+    name: "heat"
+    defaultValue: 99.4
+}
+
+Capability Welding {
+    name: "Welding"
+    specifiedBy: heat
+}

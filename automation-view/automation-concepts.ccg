@@ -1,0 +1,37 @@
+ID AutomationConcepts {
+    name: "Automation Engineering"
+    version: 1.0.0
+}
+
+// Automation Attributes
+Attribute motionAccel {
+    name: "motion_accel"
+    defaultValue: "0"
+    type: "Integer"
+    unit: "V"
+}
+
+Attribute screwCurve {
+    name: "screw_curve"
+    defaultValue: "0"
+    type: "Integer"
+    unit: "V"
+}
+
+// View Specific Concepts
+// -----------------------
+Concept c_a_robot_controller {
+    name: "Robot Controller"
+}
+
+Concept c_a_screwdriver_controller {
+    name: "Screwdriver Controller"
+}
+
+Concept c_a_fasten_screw {
+    name: "Fasten Screw"
+}
+
+Concept c_a_measure_screw {
+    name: "Measure Screw"
+}

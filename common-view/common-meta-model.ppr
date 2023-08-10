@@ -1,0 +1,142 @@
+/* PPR Network Definition */
+/*------------------------*/
+import CommonConceptGlossary.*
+import MechanicalConcepts.*
+
+ID PositionScrewDashboard_Model {
+    name: "Meta Model Position and Screw on Dashboard Use Case"
+    version: 1.1.0
+}
+
+// Products
+Product Screw {
+    name: "Screw"
+    represents: cc_screw
+}
+
+Product Dashboard {
+    name: "Dashboard"
+    represents: cc_dashboard
+}
+
+Product CarBody {
+    name: "Car Body"
+    represents: cc_car_body
+}
+
+Product CarBodyDashboard {
+    name: "Car Body with Dashboard"
+    represents: cc_car_body_dashboard
+}
+
+Product CarBodyFastendDashboard {
+    name: "Car Body with fastend Dashboard"
+    represents: cc_car_body_fastend_dashboard
+}
+
+// Processes
+Process PositionScrewDashboard {
+    name: "Position Screw & Dashboard"
+    represents: cc_position_screw_dashboard
+    inputs: Screw, Dashboard, CarBody
+    outputs: CarBodyDashboard
+}
+
+Process FastenScrew {
+    name: "Fasten Screw"
+    represents: cc_fasten_screw
+    inputs: CarBodyDashboard
+    outputs: CarBodyFastendDashboard
+}
+
+Process MeasureScrew {
+    name: "Measure Screw"
+    represents: cc_measure_screw
+    inputs: CarBodyFastendDashboard
+    outputs: CarBodyFastendDashboard
+}
+
+// Resources
+Resource TransportResource {
+    name: "Transport Resource"
+    represents: cc_transport_resource
+}
+
+Resource PositioningCell {
+    name: "Positioning Cell"
+    represents: cc_positioning_cell
+    children: Drive1, Drive2
+}
+Resource Robot {
+    name: "Robot"
+    represents: cc_robot
+    children: RobotController
+}
+
+Resource ElectricScrewdriver {
+    name: "Electric Screwdriver"
+    represents: cc_electrical_screwdriver
+    children: Bit, Robot, Drive3
+}
+
+Resource Drive1 {
+    name: "Drive 1"
+    represents: cc_drive1
+}
+
+Resource Drive2 {
+    name: "Drive 2"
+    represents: cc_drive2
+}
+
+Resource Drive3 {
+    name: "Drive 3"
+    represents: cc_drive3
+}
+
+Resource Bit {
+    name: "Bit"
+    represents: cc_bit
+}
+
+Resource RobotController {
+    name: "Robot Controller"
+    represents: cc_robot_controller
+    requires: FieldbusNetwork, LowPowerSupply
+}
+
+Resource ScrewdriverController {
+    name: "Screwdriver Controller"
+    represents: cc_screwdriver_controller
+    requires: FieldbusNetwork, LowPowerSupply
+}
+
+Resource Transformer {
+    name: "Transformer"
+    represents: cc_transformer
+    children: ScrewdriverController
+    requires: HighPowerSupply
+}
+
+Resource FieldbusNetwork {
+    name: "Fieldbus Network"
+    represents: cc_fieldbus_network
+}
+
+Resource LowPowerSupply {
+    name: "Low Power Supply"
+    represents: cc_low_power_supply
+}
+
+Resource HighPowerSupply {
+    name: "High Power Supply"
+    represents: cc_high_power_supply
+}
+
+/* Relations
+ /-------------*/
+Relation rel1 {
+    from: Bit -> MechanicalConcepts.bitType
+    to: Drive2 -> MechanicalConcepts.pos_accuracy
+    definition: "value*2"
+}
