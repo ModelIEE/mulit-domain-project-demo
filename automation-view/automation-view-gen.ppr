@@ -1,6 +1,6 @@
 // This file has been generated automatically.
  ID AutomationView {
-	version: 2023.08.16.18.04.25
+	version: 2023.08.16.18.36.08
 }
  
 // Attributes
@@ -19,6 +19,16 @@ Attribute AutomationConcepts.motion_acceleration {
 }
  
 // Resources
- // Products
+ Resource PositionScrewDashboard_Model.ScrewdriverController {
+	name: "Screwdriver Controller"
+	represents: CommonConceptGlossary.cc_screwdriver_controller
+}
+ 
+// Products
  // Processes
+ Process PositionScrewDashboard_Model.FastenScrew {
+	name: "Fasten Screw"
+	represents: CommonConceptGlossary.cc_fasten_screw
+	PositionScrewDashboard_Model.heat: 20.0
+}
  

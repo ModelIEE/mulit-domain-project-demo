@@ -64,7 +64,7 @@ Process FastenScrew {
 
 Process MeasureScrew {
     name: "Measure Screw"
-    represents: cc_measure_screw
+    represents: CommonConceptGlossary.cc_measure_screw
     inputs: CarBodyFastendDashboard
     outputs: CarBodyFastendDashboard
 }

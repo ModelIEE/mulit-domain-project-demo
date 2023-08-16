@@ -1,6 +1,6 @@
 // This file has been generated automatically.
  ID ElectricalView {
-	version: 2023.08.16.18.04.25
+	version: 2023.08.16.18.36.08
 }
  
 // Attributes
@@ -33,6 +33,52 @@ Attribute ElectricalConcepts.power_consumption {
 }
  
 // Resources
- // Products
+ Resource PositionScrewDashboard_Model.LowPowerSupply {
+	name: "Low Power Supply"
+	represents: CommonConceptGlossary.cc_low_power_supply
+}
+ 
+Resource PositionScrewDashboard_Model.Transformer {
+	name: "Transformer"
+	represents: CommonConceptGlossary.cc_transformer
+}
+ 
+Resource PositionScrewDashboard_Model.Drive3 {
+	name: "Drive 3"
+	represents: CommonConceptGlossary.cc_drive3
+}
+ 
+Resource PositionScrewDashboard_Model.ElectricScrewdriver {
+	name: "Electric Screwdriver"
+	represents: CommonConceptGlossary.cc_electrical_screwdriver
+	MechanicalConcepts.torque: 5.0
+}
+ 
+Resource PositionScrewDashboard_Model.FieldbusNetwork {
+	name: "Fieldbus Network"
+	represents: CommonConceptGlossary.cc_fieldbus_network
+}
+ 
+Resource PositionScrewDashboard_Model.Robot {
+	name: "Robot"
+	represents: CommonConceptGlossary.cc_robot
+}
+ 
+Resource PositionScrewDashboard_Model.RobotController {
+	name: "Robot Controller"
+	represents: CommonConceptGlossary.cc_robot_controller
+}
+ 
+Resource PositionScrewDashboard_Model.HighPowerSupply {
+	name: "High Power Supply"
+	represents: CommonConceptGlossary.cc_high_power_supply
+}
+ 
+Resource PositionScrewDashboard_Model.ScrewdriverController {
+	name: "Screwdriver Controller"
+	represents: CommonConceptGlossary.cc_screwdriver_controller
+}
+ 
+// Products
  // Processes
  

@@ -1,6 +1,6 @@
 // This file has been generated automatically.
  ID QualityView {
-	version: 2023.08.16.18.04.25
+	version: 2023.08.16.18.36.08
 }
  
 // Attributes
@@ -26,6 +26,65 @@ Attribute QualityConcepts.screw_tension {
 }
  
 // Resources
- // Products
- // Processes
+ Resource PositionScrewDashboard_Model.ElectricScrewdriver {
+	name: "Electric Screwdriver"
+	represents: CommonConceptGlossary.cc_electrical_screwdriver
+	MechanicalConcepts.torque: 5.0
+}
+ 
+Resource PositionScrewDashboard_Model.TransportResource {
+	name: "Transport Resource"
+	represents: CommonConceptGlossary.cc_transport_resource
+}
+ 
+Resource PositionScrewDashboard_Model.Robot {
+	name: "Robot"
+	represents: CommonConceptGlossary.cc_robot
+}
+ 
+Resource PositionScrewDashboard_Model.PositioningCell {
+	name: "Positioning Cell"
+	represents: CommonConceptGlossary.cc_positioning_cell
+	MechanicalConcepts.torque: 5.0
+}
+ 
+// Products
+ Product PositionScrewDashboard_Model.Dashboard {
+	name: "Dashboard"
+	represents: CommonConceptGlossary.cc_dashboard
+	PositionScrewDashboard_Model.heat: 11.0
+}
+ 
+Product PositionScrewDashboard_Model.CarBodyDashboard {
+	name: "Car Body with Dashboard"
+	represents: CommonConceptGlossary.cc_car_body_dashboard
+}
+ 
+Product PositionScrewDashboard_Model.CarBodyFastendDashboard {
+	name: "Car Body with fastened Dashboard"
+	represents: CommonConceptGlossary.cc_car_body_fastend_dashboard
+}
+ 
+Product PositionScrewDashboard_Model.Screw {
+	name: "Screw"
+	represents: CommonConceptGlossary.cc_screw
+	PositionScrewDashboard_Model.heat: 10.0
+}
+ 
+Product PositionScrewDashboard_Model.CarBody {
+	name: "Car Body"
+	represents: CommonConceptGlossary.cc_car_body
+}
+ 
+// Processes
+ Process PositionScrewDashboard_Model.MeasureScrew {
+	name: "Measure Screw"
+	represents: CommonConceptGlossary.cc_measure_screw
+}
+ 
+Process PositionScrewDashboard_Model.FastenScrew {
+	name: "Fasten Screw"
+	represents: CommonConceptGlossary.cc_fasten_screw
+	PositionScrewDashboard_Model.heat: 20.0
+}
  
