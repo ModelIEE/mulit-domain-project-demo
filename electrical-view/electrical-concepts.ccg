@@ -20,15 +20,15 @@ Attribute fieldBus_type {
 
 Attribute power_supply {
     name: "power_supply"
-    defaultValue: "0"
-    type: "Integer"
+    defaultValue: 0.0
+    type: "Number"
     unit: "V"
 }
 
 Attribute current_supply {
     name: "current_supply"
-    defaultValue: "0"
-    type: "Integer"
+    defaultValue: 0.0
+    type: "Number"
     unit: "V"
 }
 
@@ -76,10 +76,11 @@ Concept c_e_high_power_supply {
     attributes: ElectricalConcepts.power_supply
 }
 
-/* Relations
- /-------------*/
-Relation ElectricalConcepts.power_relation1 {
-    from: c_e_screwdriver_controller -> ElectricalConcepts.power_supply
-    to: c_e_transformer -> ElectricalConcepts.current_supply
-    definition: "value*2"
+Relation relation1 {
+    from: c_e_high_power_supply -> ElectricalConcepts.power_supply
+    to: c_e_fieldbus_network -> ElectricalConcepts.fieldBus_type
+    definition: "value*3"
 }
+
+
+

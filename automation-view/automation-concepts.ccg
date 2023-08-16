@@ -4,17 +4,17 @@ ID AutomationConcepts {
 }
 
 // Automation Attributes
-Attribute motionAccel {
+Attribute motion_acceleration {
     name: "motion_accel"
-    defaultValue: "0"
-    type: "Integer"
+    defaultValue: 0.0
+    type: "Number"
     unit: "V"
 }
 
-Attribute screwCurve {
+Attribute screw_curve {
     name: "screw_curve"
-    defaultValue: "0"
-    type: "Integer"
+    defaultValue: 0.0
+    type: "Number"
     unit: "V"
 }
 
@@ -22,10 +22,12 @@ Attribute screwCurve {
 // -----------------------
 Concept c_a_robot_controller {
     name: "Robot Controller"
+    attributes: motion_acceleration
 }
 
 Concept c_a_screwdriver_controller {
     name: "Screwdriver Controller"
+    attributes: screw_curve
 }
 
 Concept c_a_fasten_screw {

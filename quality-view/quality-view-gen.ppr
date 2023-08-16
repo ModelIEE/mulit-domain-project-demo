@@ -1,0 +1,31 @@
+// This file has been generated automatically.
+ ID QualityView {
+	version: 2023.08.16.18.04.25
+}
+ 
+// Attributes
+ Attribute QualityConcepts.req_torque {
+	name: "req_torque"
+	defaultValue: 0.0
+	type: "Number"
+	unit: "nm"
+}
+ 
+Attribute QualityConcepts.cycle_time {
+	name: "cycle_time"
+	defaultValue: 0.0
+	type: "Number"
+	unit: ""
+}
+ 
+Attribute QualityConcepts.screw_tension {
+	name: "screw_tension"
+	defaultValue: 0.0
+	type: "Number"
+	unit: "nm"
+}
+ 
+// Resources
+ // Products
+ // Processes
+ 

@@ -1,39 +1,40 @@
 ID QualityConcepts {
-    name: "Quality Engineering 2"
+    name: "Quality Engineering"
     version: 1.0.0
 }
 
-// Quality Attributes 
+// Quality Attributes
 Attribute cycle_time {
     name: "cycle_time"
-    defaultValue: "0"
-    type: "Integer"
-    unit: "sec"
+    defaultValue: 0.0
+    type: "Number"
 }
 
 Attribute req_torque {
     name: "req_torque"
-    defaultValue: '0'
-    type: "Integer"
+    defaultValue: 0.0
+    type: "Number"
     unit: "nm"
 }
 
 Attribute screw_tension {
     name: "screw_tension"
-    defaultValue: "0"
-    type: "Integer"
+    defaultValue: 0.0
+    type: "Number"
     unit: "nm"
 }
 
 // View Specific Concepts
 // -----------------------
+
 // Products
 Concept c_q_screw {
     name: "Screw"
+    attributes: req_torque
 }
 
 Concept c_q_dashboard {
-    name: "Dasboard"
+    name: "Dashboard"
 }
 
 Concept c_q_car_body {
@@ -65,6 +66,7 @@ Concept c_q_measure_screw {
 }
 
 // Resource
+
 Concept c_q_transportResource {
     name: "Transport Resource"
 }

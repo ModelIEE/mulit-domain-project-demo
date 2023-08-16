@@ -1,0 +1,31 @@
+// This file has been generated automatically.
+ ID MechanicView {
+	version: 2023.08.16.18.04.25
+}
+ 
+// Attributes
+ Attribute MechanicalConcepts.torque {
+	name: "torque"
+	defaultValue: 0.0
+	type: "Number"
+	unit: "mm"
+}
+ 
+Attribute MechanicalConcepts.bitType {
+	name: "bit_type"
+	defaultValue: "PH2"
+	type: "String"
+	unit: ""
+}
+ 
+Attribute MechanicalConcepts.pos_accuracy {
+	name: "pos_Accuracy"
+	defaultValue: 0.0
+	type: "Number"
+	unit: "mm"
+}
+ 
+// Resources
+ // Products
+ // Processes
+ 

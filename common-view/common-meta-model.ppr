@@ -1,52 +1,65 @@
 /* PPR Network Definition */
 /*------------------------*/
-import CommonConceptGlossary.*
-import MechanicalConcepts.*
 
 ID PositionScrewDashboard_Model {
     name: "Meta Model Position and Screw on Dashboard Use Case"
     version: 1.1.0
 }
 
-// Products
+// Local Definitions
+
+Attribute heat {
+    name: "heat"
+    defaultValue: 0.0
+    type: "Number"
+    unit: "C"
+}
+
+/* Products     */
+/*--------------*/
+
 Product Screw {
     name: "Screw"
-    represents: cc_screw
+    represents: CommonConceptGlossary.cc_screw
+    heat: 10.0
 }
 
 Product Dashboard {
     name: "Dashboard"
-    represents: cc_dashboard
+    represents: CommonConceptGlossary.cc_dashboard
+    heat: 11.0
 }
 
 Product CarBody {
     name: "Car Body"
-    represents: cc_car_body
+    represents: CommonConceptGlossary.cc_car_body
 }
 
 Product CarBodyDashboard {
     name: "Car Body with Dashboard"
-    represents: cc_car_body_dashboard
+    represents: CommonConceptGlossary.cc_car_body_dashboard
 }
 
 Product CarBodyFastendDashboard {
-    name: "Car Body with fastend Dashboard"
-    represents: cc_car_body_fastend_dashboard
+    name: "Car Body with fastened Dashboard"
+    represents: CommonConceptGlossary.cc_car_body_fastend_dashboard
 }
 
 // Processes
 Process PositionScrewDashboard {
     name: "Position Screw & Dashboard"
-    represents: cc_position_screw_dashboard
+    represents: CommonConceptGlossary.cc_position_screw_dashboard
     inputs: Screw, Dashboard, CarBody
     outputs: CarBodyDashboard
+    heat: 25.0
 }
 
 Process FastenScrew {
     name: "Fasten Screw"
-    represents: cc_fasten_screw
+    represents: CommonConceptGlossary.cc_fasten_screw
     inputs: CarBodyDashboard
     outputs: CarBodyFastendDashboard
+    heat: 20.0
 }
 
 Process MeasureScrew {
@@ -57,86 +70,113 @@ Process MeasureScrew {
 }
 
 // Resources
+
 Resource TransportResource {
     name: "Transport Resource"
-    represents: cc_transport_resource
+    represents: CommonConceptGlossary.cc_transport_resource
 }
 
 Resource PositioningCell {
     name: "Positioning Cell"
-    represents: cc_positioning_cell
+    represents: CommonConceptGlossary.cc_positioning_cell
     children: Drive1, Drive2
+    MechanicalConcepts.torque: 5.0
 }
 Resource Robot {
     name: "Robot"
-    represents: cc_robot
+    represents: CommonConceptGlossary.cc_robot
     children: RobotController
+    implements: Bit
 }
 
 Resource ElectricScrewdriver {
     name: "Electric Screwdriver"
-    represents: cc_electrical_screwdriver
+    represents: CommonConceptGlossary.cc_electrical_screwdriver
     children: Bit, Robot, Drive3
+    MechanicalConcepts.torque: 5.0
 }
 
 Resource Drive1 {
     name: "Drive 1"
-    represents: cc_drive1
+    represents: CommonConceptGlossary.cc_drive1
 }
 
 Resource Drive2 {
     name: "Drive 2"
-    represents: cc_drive2
+    represents: CommonConceptGlossary.cc_drive2
 }
 
 Resource Drive3 {
     name: "Drive 3"
-    represents: cc_drive3
+    represents: CommonConceptGlossary.cc_drive3
 }
 
 Resource Bit {
     name: "Bit"
-    represents: cc_bit
+    represents: CommonConceptGlossary.cc_bit
+    excludes: Drive3, Transformer
 }
 
 Resource RobotController {
     name: "Robot Controller"
-    represents: cc_robot_controller
+    represents: CommonConceptGlossary.cc_robot_controller
     requires: FieldbusNetwork, LowPowerSupply
 }
 
 Resource ScrewdriverController {
     name: "Screwdriver Controller"
-    represents: cc_screwdriver_controller
+    represents: CommonConceptGlossary.cc_screwdriver_controller
     requires: FieldbusNetwork, LowPowerSupply
 }
 
 Resource Transformer {
     name: "Transformer"
-    represents: cc_transformer
+    represents: CommonConceptGlossary.cc_transformer
     children: ScrewdriverController
     requires: HighPowerSupply
 }
 
 Resource FieldbusNetwork {
     name: "Fieldbus Network"
-    represents: cc_fieldbus_network
+    represents: CommonConceptGlossary.cc_fieldbus_network
 }
 
 Resource LowPowerSupply {
     name: "Low Power Supply"
-    represents: cc_low_power_supply
+    represents: CommonConceptGlossary.cc_low_power_supply
 }
 
 Resource HighPowerSupply {
     name: "High Power Supply"
-    represents: cc_high_power_supply
+    represents: CommonConceptGlossary.cc_high_power_supply
 }
 
-/* Relations
- /-------------*/
-Relation rel1 {
-    from: Bit -> MechanicalConcepts.bitType
-    to: Drive2 -> MechanicalConcepts.pos_accuracy
+Capability Welding {
+    name: "Welding"
+    specifiedBy: heat
+}
+Capability Screwing {
+    name: "Screwing"
+    inherits: Welding
+}
+
+// Relations
+
+Relation PositionScrewDashboard_Model.relation1 {
+    from: PositionScrewDashboard_Model.ElectricScrewdriver -> MechanicalConcepts.torque
+    to: PositionScrewDashboard_Model.PositioningCell -> MechanicalConcepts.torque
+    definition: "value*2"
+}
+
+
+Relation PositionScrewDashboard_Model.relation2 {
+    from: PositionScrewDashboard_Model.PositionScrewDashboard -> heat
+    to: PositionScrewDashboard_Model.FastenScrew -> heat
+    definition: "value*2"
+}
+
+Relation PositionScrewDashboard_Model.relation3 {
+    from: PositionScrewDashboard_Model.Screw -> heat
+    to: PositionScrewDashboard_Model.Dashboard -> heat
     definition: "value*2"
 }

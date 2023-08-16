@@ -1,0 +1,24 @@
+// This file has been generated automatically.
+ ID AutomationView {
+	version: 2023.08.16.18.04.25
+}
+ 
+// Attributes
+ Attribute AutomationConcepts.screw_curve {
+	name: "screw_curve"
+	defaultValue: 0.0
+	type: "Number"
+	unit: "V"
+}
+ 
+Attribute AutomationConcepts.motion_acceleration {
+	name: "motion_accel"
+	defaultValue: 0.0
+	type: "Number"
+	unit: "V"
+}
+ 
+// Resources
+ // Products
+ // Processes
+ 

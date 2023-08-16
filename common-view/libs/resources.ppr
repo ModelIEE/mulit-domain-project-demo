@@ -7,6 +7,10 @@ Resource Screwdriver {
 Attribute heat {
     name: "heat"
     defaultValue: 99.4
+    type: "Number"
+    unit: "V"
+
+
 }
 
 Capability Welding {

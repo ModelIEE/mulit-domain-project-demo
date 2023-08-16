@@ -6,15 +6,15 @@ ID MechanicalConcepts {
 // Mechanical Attributes
 Attribute pos_accuracy {
     name: "pos_Accuracy"
-    defaultValue: "0"
-    type: "Integer"
+    defaultValue: 0.0
+    type: "Number"
     unit: "mm"
 }
 
 Attribute torque {
     name: "torque"
-    defaultValue: "0"
-    type: "Integer"
+    defaultValue: 0.0
+    type: "Number"
     unit: "mm"
 }
 
@@ -63,10 +63,10 @@ Concept c_m_drive2 {
 }
 
 Concept c_m_drive3 {
-    name: "Drive 2"
+    name: "Drive 3"
 }
 
 Concept c_m_bit {
-    name: "Drive 2"
+    name: "Bit"
     attributes: bitType
 }
