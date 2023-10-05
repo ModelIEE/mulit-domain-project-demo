@@ -114,6 +114,8 @@ Resource ElectricScrewdriver {
     children: Bit, Robot, Drive3
     MechanicalConcepts.torque: 5.0
     QualityConcepts.req_torque: 0.0
+    ElectricalConcepts.power_consumption: "0"
+
  
 }
 
@@ -168,6 +170,7 @@ Resource Transformer {
 Resource FieldbusNetwork {
     name: "Fieldbus Network"
     represents: CommonConceptGlossary.cc_fieldbus_network
+	ElectricalConcepts.fieldBus_type: ""
 }
 
 Resource LowPowerSupply {
