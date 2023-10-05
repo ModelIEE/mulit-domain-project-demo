@@ -1,49 +1,32 @@
-// This file has been generated automatically.
+// This file has been generated automatically on 05.10.2023 11.38.40
  ID MechanicView {
-	version: 2023.08.16.18.36.08
-}
- 
-// Attributes
- Attribute MechanicalConcepts.torque {
-	name: "torque"
-	defaultValue: 0.0
-	type: "Number"
-	unit: "mm"
-}
- 
-Attribute MechanicalConcepts.bitType {
-	name: "bit_type"
-	defaultValue: "PH2"
-	type: "String"
-	unit: ""
-}
- 
-Attribute MechanicalConcepts.pos_accuracy {
-	name: "pos_Accuracy"
-	defaultValue: 0.0
-	type: "Number"
-	unit: "mm"
+	name: "Mechanical Engineering"
+	version: 0510.2023.113840
 }
  
 // Resources
  Resource PositionScrewDashboard_Model.Drive1 {
 	name: "Drive 1"
 	represents: CommonConceptGlossary.cc_drive1
+	parents: PositionScrewDashboard_Model.PositioningCell
 }
  
 Resource PositionScrewDashboard_Model.Drive2 {
 	name: "Drive 2"
 	represents: CommonConceptGlossary.cc_drive2
+	parents: PositionScrewDashboard_Model.PositioningCell
 }
  
 Resource PositionScrewDashboard_Model.Drive3 {
 	name: "Drive 3"
 	represents: CommonConceptGlossary.cc_drive3
+	parents: PositionScrewDashboard_Model.ElectricScrewdriver
 }
  
 Resource PositionScrewDashboard_Model.ElectricScrewdriver {
 	name: "Electric Screwdriver"
 	represents: CommonConceptGlossary.cc_electrical_screwdriver
+	children: PositionScrewDashboard_Model.Bit, PositionScrewDashboard_Model.Robot, PositionScrewDashboard_Model.Drive3
 	MechanicalConcepts.torque: 5.0
 }
  
@@ -55,16 +38,23 @@ Resource PositionScrewDashboard_Model.TransportResource {
 Resource PositionScrewDashboard_Model.Bit {
 	name: "Bit"
 	represents: CommonConceptGlossary.cc_bit
+	parents: PositionScrewDashboard_Model.ElectricScrewdriver
+	excludes: PositionScrewDashboard_Model.Drive3
+	MechanicalConcepts.bitType: "T2"
 }
  
 Resource PositionScrewDashboard_Model.Robot {
 	name: "Robot"
 	represents: CommonConceptGlossary.cc_robot
+	parents: PositionScrewDashboard_Model.ElectricScrewdriver
+	implements: PositionScrewDashboard_Model.Bit
+	MechanicalConcepts.pos_accuracy: 0.0
 }
  
 Resource PositionScrewDashboard_Model.PositioningCell {
 	name: "Positioning Cell"
 	represents: CommonConceptGlossary.cc_positioning_cell
+	children: PositionScrewDashboard_Model.Drive1, PositionScrewDashboard_Model.Drive2
 	MechanicalConcepts.torque: 5.0
 }
  
@@ -73,12 +63,18 @@ Resource PositionScrewDashboard_Model.PositioningCell {
  Process PositionScrewDashboard_Model.PositionScrewDashboard {
 	name: "Position Screw & Dashboard"
 	represents: CommonConceptGlossary.cc_position_screw_dashboard
-	PositionScrewDashboard_Model.heat: 25.0
+	MechanicalConcepts.pos_accuracy: 0.0
 }
  
 Process PositionScrewDashboard_Model.FastenScrew {
 	name: "Fasten Screw"
 	represents: CommonConceptGlossary.cc_fasten_screw
-	PositionScrewDashboard_Model.heat: 20.0
+}
+ 
+// Semantic Links
+ Relation PositionScrewDashboard_Model.relation1 {
+	from: PositionScrewDashboard_Model.ElectricScrewdriver -> MechanicalConcepts.torque
+	to: PositionScrewDashboard_Model.PositioningCell -> MechanicalConcepts.torque
+	definition: "value*2"
 }
  

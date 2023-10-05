@@ -1,27 +1,15 @@
-// This file has been generated automatically.
+// This file has been generated automatically on 05.10.2023 11.38.40
  ID AutomationView {
-	version: 2023.08.16.18.36.08
-}
- 
-// Attributes
- Attribute AutomationConcepts.screw_curve {
-	name: "screw_curve"
-	defaultValue: 0.0
-	type: "Number"
-	unit: "V"
-}
- 
-Attribute AutomationConcepts.motion_acceleration {
-	name: "motion_accel"
-	defaultValue: 0.0
-	type: "Number"
-	unit: "V"
+	name: "Automation Engineering"
+	version: 0510.2023.113840
 }
  
 // Resources
  Resource PositionScrewDashboard_Model.ScrewdriverController {
 	name: "Screwdriver Controller"
 	represents: CommonConceptGlossary.cc_screwdriver_controller
+	AutomationConcepts.screw_curve: 5.0
+	AutomationConcepts.motion_acceleration: 0.0
 }
  
 // Products
@@ -29,6 +17,7 @@ Attribute AutomationConcepts.motion_acceleration {
  Process PositionScrewDashboard_Model.FastenScrew {
 	name: "Fasten Screw"
 	represents: CommonConceptGlossary.cc_fasten_screw
-	PositionScrewDashboard_Model.heat: 20.0
 }
+ 
+// Semantic Links
  

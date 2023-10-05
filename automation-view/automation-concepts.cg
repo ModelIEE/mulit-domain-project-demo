@@ -27,7 +27,7 @@ Concept c_a_robot_controller {
 
 Concept c_a_screwdriver_controller {
     name: "Screwdriver Controller"
-    attributes: screw_curve
+    attributes: screw_curve, motion_acceleration
 }
 
 Concept c_a_fasten_screw {

@@ -1,35 +1,15 @@
-// This file has been generated automatically.
+// This file has been generated automatically on 05.10.2023 11.38.40
  ID QualityView {
-	version: 2023.08.16.18.36.08
-}
- 
-// Attributes
- Attribute QualityConcepts.req_torque {
-	name: "req_torque"
-	defaultValue: 0.0
-	type: "Number"
-	unit: "nm"
-}
- 
-Attribute QualityConcepts.cycle_time {
-	name: "cycle_time"
-	defaultValue: 0.0
-	type: "Number"
-	unit: ""
-}
- 
-Attribute QualityConcepts.screw_tension {
-	name: "screw_tension"
-	defaultValue: 0.0
-	type: "Number"
-	unit: "nm"
+	name: "Quality Engineering"
+	version: 0510.2023.113840
 }
  
 // Resources
  Resource PositionScrewDashboard_Model.ElectricScrewdriver {
 	name: "Electric Screwdriver"
 	represents: CommonConceptGlossary.cc_electrical_screwdriver
-	MechanicalConcepts.torque: 5.0
+	children: PositionScrewDashboard_Model.Robot
+	QualityConcepts.req_torque: 0.0
 }
  
 Resource PositionScrewDashboard_Model.TransportResource {
@@ -40,19 +20,22 @@ Resource PositionScrewDashboard_Model.TransportResource {
 Resource PositionScrewDashboard_Model.Robot {
 	name: "Robot"
 	represents: CommonConceptGlossary.cc_robot
+	parents: PositionScrewDashboard_Model.ElectricScrewdriver
 }
  
 Resource PositionScrewDashboard_Model.PositioningCell {
 	name: "Positioning Cell"
 	represents: CommonConceptGlossary.cc_positioning_cell
-	MechanicalConcepts.torque: 5.0
+	QualityConcepts.screw_tension: 125.0
 }
  
 // Products
  Product PositionScrewDashboard_Model.Dashboard {
 	name: "Dashboard"
 	represents: CommonConceptGlossary.cc_dashboard
-	PositionScrewDashboard_Model.heat: 11.0
+	QualityConcepts.req_torque: 5.0
+	QualityConcepts.cycle_time: 5.0
+	QualityConcepts.screw_tension: 5.0
 }
  
 Product PositionScrewDashboard_Model.CarBodyDashboard {
@@ -68,7 +51,8 @@ Product PositionScrewDashboard_Model.CarBodyFastendDashboard {
 Product PositionScrewDashboard_Model.Screw {
 	name: "Screw"
 	represents: CommonConceptGlossary.cc_screw
-	PositionScrewDashboard_Model.heat: 10.0
+	QualityConcepts.req_torque: 30.0
+	QualityConcepts.cycle_time: 10.0
 }
  
 Product PositionScrewDashboard_Model.CarBody {
@@ -80,11 +64,20 @@ Product PositionScrewDashboard_Model.CarBody {
  Process PositionScrewDashboard_Model.MeasureScrew {
 	name: "Measure Screw"
 	represents: CommonConceptGlossary.cc_measure_screw
+	QualityConcepts.screw_tension: 125.0
 }
  
 Process PositionScrewDashboard_Model.FastenScrew {
 	name: "Fasten Screw"
 	represents: CommonConceptGlossary.cc_fasten_screw
-	PositionScrewDashboard_Model.heat: 20.0
+	QualityConcepts.req_torque: 0.0
+	QualityConcepts.cycle_time: 5.0
+}
+ 
+// Semantic Links
+ Relation PositionScrewDashboard_Model.relation5 {
+	from: PositionScrewDashboard_Model.ElectricScrewdriver -> QualityConcepts.req_torque
+	to: PositionScrewDashboard_Model.PositioningCell -> QualityConcepts.screw_tension
+	definition: "value*2"
 }
  

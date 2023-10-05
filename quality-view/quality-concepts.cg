@@ -30,11 +30,14 @@ Attribute screw_tension {
 // Products
 Concept c_q_screw {
     name: "Screw"
-    attributes: req_torque
+    attributes: req_torque, cycle_time
 }
 
 Concept c_q_dashboard {
     name: "Dashboard"
+    attributes: QualityConcepts.req_torque,
+	QualityConcepts.cycle_time,
+	QualityConcepts.screw_tension
 }
 
 Concept c_q_car_body {
@@ -73,6 +76,7 @@ Concept c_q_transportResource {
 
 Concept c_q_positioningCell {
     name: "Positioning Cell"
+    attributes: screw_tension
 }
 
 Concept c_q_robot {

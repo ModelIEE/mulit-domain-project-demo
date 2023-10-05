@@ -4,6 +4,7 @@ import QualityConcepts.*
 import ElectricalConcepts.*
 
 ID CommonConceptGlossary {
+    name: "Common Concept Glossary"
     version: 1.0.0
 }
 
@@ -63,6 +64,12 @@ CommonConcept cc_drive3 {
 
 CommonConcept cc_bit {
     name: "Bit"
+    inhabits: 
+        MechanicalConcepts.c_m_bit
+}
+
+CommonConcept cc_bit2 {
+    name: "Bit 2"
     inhabits: 
         MechanicalConcepts.c_m_bit
 }

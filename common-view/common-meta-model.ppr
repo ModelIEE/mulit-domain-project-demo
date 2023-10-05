@@ -22,12 +22,21 @@ Product Screw {
     name: "Screw"
     represents: CommonConceptGlossary.cc_screw
     heat: 10.0
+    QualityConcepts.req_torque: 30.0
+    QualityConcepts.cycle_time: 10.0
+
+
 }
 
 Product Dashboard {
     name: "Dashboard"
     represents: CommonConceptGlossary.cc_dashboard
     heat: 11.0
+    QualityConcepts.req_torque: 5.0
+	QualityConcepts.cycle_time: 5.0
+	QualityConcepts.screw_tension: 5.0
+
+
 }
 
 Product CarBody {
@@ -52,6 +61,8 @@ Process PositionScrewDashboard {
     inputs: Screw, Dashboard, CarBody
     outputs: CarBodyDashboard
     heat: 25.0
+    MechanicalConcepts.pos_accuracy: 0.0
+
 }
 
 Process FastenScrew {
@@ -60,6 +71,8 @@ Process FastenScrew {
     inputs: CarBodyDashboard
     outputs: CarBodyFastendDashboard
     heat: 20.0
+    QualityConcepts.req_torque: 0.0
+    QualityConcepts.cycle_time: 5.0
 }
 
 Process MeasureScrew {
@@ -67,6 +80,8 @@ Process MeasureScrew {
     represents: CommonConceptGlossary.cc_measure_screw
     inputs: CarBodyFastendDashboard
     outputs: CarBodyFastendDashboard
+    QualityConcepts.screw_tension: 125.0
+
 }
 
 // Resources
@@ -81,12 +96,16 @@ Resource PositioningCell {
     represents: CommonConceptGlossary.cc_positioning_cell
     children: Drive1, Drive2
     MechanicalConcepts.torque: 5.0
+    QualityConcepts.screw_tension: 125.0
+
 }
 Resource Robot {
     name: "Robot"
     represents: CommonConceptGlossary.cc_robot
     children: RobotController
     implements: Bit
+    MechanicalConcepts.pos_accuracy: 0.0
+
 }
 
 Resource ElectricScrewdriver {
@@ -94,6 +113,8 @@ Resource ElectricScrewdriver {
     represents: CommonConceptGlossary.cc_electrical_screwdriver
     children: Bit, Robot, Drive3
     MechanicalConcepts.torque: 5.0
+    QualityConcepts.req_torque: 0.0
+ 
 }
 
 Resource Drive1 {
@@ -115,6 +136,7 @@ Resource Bit {
     name: "Bit"
     represents: CommonConceptGlossary.cc_bit
     excludes: Drive3, Transformer
+    MechanicalConcepts.bitType: "T2"
 }
 
 Resource RobotController {
@@ -127,6 +149,11 @@ Resource ScrewdriverController {
     name: "Screwdriver Controller"
     represents: CommonConceptGlossary.cc_screwdriver_controller
     requires: FieldbusNetwork, LowPowerSupply
+    AutomationConcepts.screw_curve: 5.0
+    AutomationConcepts.motion_acceleration: 0.0
+    ElectricalConcepts.power_supply: 0.0
+
+
 }
 
 Resource Transformer {
@@ -134,6 +161,8 @@ Resource Transformer {
     represents: CommonConceptGlossary.cc_transformer
     children: ScrewdriverController
     requires: HighPowerSupply
+    ElectricalConcepts.current_supply: 0.0
+
 }
 
 Resource FieldbusNetwork {
@@ -144,11 +173,14 @@ Resource FieldbusNetwork {
 Resource LowPowerSupply {
     name: "Low Power Supply"
     represents: CommonConceptGlossary.cc_low_power_supply
+    ElectricalConcepts.power_supply: 0.0
+
 }
 
 Resource HighPowerSupply {
     name: "High Power Supply"
     represents: CommonConceptGlossary.cc_high_power_supply
+	ElectricalConcepts.power_supply: 0.0
 }
 
 Capability Welding {
@@ -170,13 +202,32 @@ Relation PositionScrewDashboard_Model.relation1 {
 
 
 Relation PositionScrewDashboard_Model.relation2 {
-    from: PositionScrewDashboard_Model.PositionScrewDashboard -> heat
+    from: PositionScrewDashboard_Model.PositionScrewDashboard -> PositionScrewDashboard_Model.heat
     to: PositionScrewDashboard_Model.FastenScrew -> heat
     definition: "value*2"
 }
 
 Relation PositionScrewDashboard_Model.relation3 {
-    from: PositionScrewDashboard_Model.Screw -> heat
+    from: PositionScrewDashboard_Model.Screw -> PositionScrewDashboard_Model.heat
     to: PositionScrewDashboard_Model.Dashboard -> heat
     definition: "value*2"
 }
+
+Relation PositionScrewDashboard_Model.relation4 {
+    from: PositionScrewDashboard_Model.ElectricScrewdriver -> MechanicalConcepts.torque
+    to: PositionScrewDashboard_Model.PositioningCell -> QualityConcepts.screw_tension
+    definition: "value*2"
+}
+
+Relation PositionScrewDashboard_Model.relation5 {
+    from: PositionScrewDashboard_Model.ElectricScrewdriver -> QualityConcepts.req_torque
+    to: PositionScrewDashboard_Model.PositioningCell -> QualityConcepts.screw_tension
+    definition: "value*2"
+}
+
+Relation PositionScrewDashboard_Model.relation5 {
+    from: PositionScrewDashboard_Model.ScrewdriverController -> AutomationConcepts.motion_acceleration
+    to: PositionScrewDashboard_Model.PositioningCell -> QualityConcepts.screw_tension
+    definition: "value*2"
+}
+
