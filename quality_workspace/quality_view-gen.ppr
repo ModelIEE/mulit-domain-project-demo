@@ -1,0 +1,18 @@
+// This domain view was generated automatically on 08.01.2024 20.11.32 from 'FastenScrewDashboard_Model' with version '1.0.1'
+ID QualityView {
+	name: "Quality Engineering"
+	version: 1.0.2
+}
+ 
+// Resources
+ // Products
+ // Processes
+ Process FastenScrewDashboard_Model.fasten_screw_measure {
+	name: "Fasten Screw & Measure"
+	represents: CommonConceptGlossary.cc_fasten_screw_measure
+	QualityConcepts.req_torque: 0.0
+	QualityConcepts.req_pos_accuracy: 100.0
+}
+ 
+// Semantic Links
+ 

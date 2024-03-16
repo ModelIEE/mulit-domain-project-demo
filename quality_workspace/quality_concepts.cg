@@ -1,0 +1,23 @@
+ID QualityConcepts {
+    name: "Quality Engineering"
+    version: 1.0.0
+}
+
+Attribute req_torque {
+    name: "Required torque"
+    defaultValue: 0.0
+    type: "Number"
+    unit: "nm"
+}
+
+Attribute req_pos_accuracy {
+    name: "Required position accuracy"
+    defaultValue: 0.0
+    type: "Number"
+    unit: "%"
+}
+
+Concept c_q_fasten_screw_measure {
+    name: "Fasten Screw & Measure"
+    attributes: req_torque, req_pos_accuracy
+}

@@ -1,0 +1,23 @@
+// This domain view was generated automatically on 08.01.2024 20.11.32 from 'FastenScrewDashboard_Model' with version '1.0.1'
+ID AutomationView {
+	name: "Automation Engineering"
+	version: 1.0.2
+}
+ 
+// Resources
+ Resource FastenScrewDashboard_Model.robot_controller {
+	name: "Robot Controller"
+	represents: CommonConceptGlossary.cc_robot_controller
+	AutomationConcepts.motion_acceleration: 0.0
+}
+ 
+Resource FastenScrewDashboard_Model.screwdriver_controller {
+	name: "Screwdriver Controller"
+	represents: CommonConceptGlossary.cc_screwdriver_controller
+	AutomationConcepts.screw_curve: 100.0
+}
+ 
+// Products
+ // Processes
+ // Semantic Links
+ 

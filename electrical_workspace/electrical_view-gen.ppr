@@ -1,0 +1,28 @@
+// This domain view was generated automatically on 08.01.2024 20.11.32 from 'FastenScrewDashboard_Model' with version '1.0.1'
+ID ElectricalView {
+	name: "Electrical Engineering"
+	version: 1.0.2
+}
+ 
+// Resources
+ Resource FastenScrewDashboard_Model.transformer {
+	name: "Transformer"
+	represents: CommonConceptGlossary.cc_transformer
+	ElectricalConcepts.current_supply: 6.25
+}
+ 
+Resource FastenScrewDashboard_Model.electric_screwdriver {
+	name: "Electric Screwdriver"
+	represents: CommonConceptGlossary.cc_electric_screwdriver
+	ElectricalConcepts.power_consumption: 1000.0
+}
+ 
+// Products
+ // Processes
+ // Semantic Links
+ Relation FastenScrewDashboard_Model.relation5_power {
+	from: FastenScrewDashboard_Model.electric_screwdriver -> ElectricalConcepts.power_consumption
+	to: FastenScrewDashboard_Model.transformer -> ElectricalConcepts.current_supply
+	definition: "P:/:240" 
+}
+ 

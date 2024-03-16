@@ -1,0 +1,45 @@
+ID CommonConceptGlossary {
+    name: "Common Concept Glossary"
+    version: 1.0.0
+}
+
+CommonConcept cc_electric_screwdriver {
+    name: "Electric Screwdriver"
+    inhabits: MechanicalConcepts.c_m_electric_screwdriver, 
+            ElectricalConcepts.c_e_electric_screwdriver
+
+}
+
+CommonConcept cc_robot_controller {
+    name: "Robot Controller"
+    inhabits: 
+        AutomationConcepts.c_a_robot_controller
+}
+
+CommonConcept cc_screwdriver_controller {
+    name: "Screwdriver Controller"
+    inhabits: 
+        AutomationConcepts.c_a_screwdriver_controller
+}
+
+CommonConcept cc_transformer {
+    name: "Transformer"
+    inhabits: ElectricalConcepts.c_e_transformer
+}
+
+CommonConcept cc_bit {
+    name: "Bit"
+    inhabits: MechanicalConcepts.c_m_bit
+}
+
+CommonConcept cc_robot {
+    name: "Robot"
+    inhabits: MechanicalConcepts.c_m_robot
+}
+
+CommonConcept cc_fasten_screw_measure {
+    name: "Fasten Screw & Measure"
+    inhabits: QualityConcepts.c_q_fasten_screw_measure
+}
+
+

@@ -1,0 +1,32 @@
+ID ElectricalConcepts {
+    name: "Electrical Engineering"
+    version: 1.0.0
+}
+
+// Attributes
+Attribute power_consumption {
+    name: "power consumption"
+    defaultValue: 0.0
+    type: "Number"
+    unit: "W"
+}
+
+Attribute current_supply {
+    name: "current power upply"
+    defaultValue: 0.0
+    type: "Number"
+    unit: "V"
+}
+
+
+Concept c_e_electric_screwdriver {
+    name: "Electric Screwdriver"
+    attributes: power_consumption
+}
+
+
+Concept c_e_transformer {
+    name: "Transformer"
+    attributes: current_supply
+}
+

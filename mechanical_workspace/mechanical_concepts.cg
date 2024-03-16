@@ -1,0 +1,49 @@
+ID MechanicalConcepts {
+    name: "Mechanical Domain Concepts Glossary"
+    version: 1.0.0
+}
+
+Attribute pos_accuracy {
+    name: "position accuracy"
+    defaultValue: 0.0
+    type: "Number"
+    unit: "%"
+}
+
+Attribute torque {
+    name: "torque"
+    defaultValue: 0.0
+    type: "Number"
+    unit: "mm"
+}
+
+Attribute bit_type {
+    name: "bit type"
+    defaultValue: "PH2"
+    type: "String"
+    unit: ""
+}
+
+Concept c_m_robot {
+    name: "Robot"
+    attributes: pos_accuracy
+}
+
+Concept c_m_bit {
+    name: "Bit"
+    attributes: bit_type
+}
+
+Concept c_m_electric_screwdriver {
+    name: "Electric Screwdriver"
+    attributes: torque
+}
+
+
+Relation relation_screwing_tension {
+    from: c_m_electric_screwdriver -> MechanicalConcepts.torque
+    to: c_m_bit -> MechanicalConcepts.bit_type
+    definition: "P:=:UNI"
+}
+
+

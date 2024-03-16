@@ -1,0 +1,68 @@
+# This file is a template, and might need editing before it works on your project.
+# This is a sample GitLab CI/CD configuration file that should run without any modifications.
+# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
+# it uses echo commands to simulate the pipeline execution.
+#
+# A pipeline is composed of independent jobs that run scripts, grouped into stages.
+# Stages run in sequential order, but jobs within stages run in parallel.
+#
+# For more information, see: https://docs.gitlab.com/ee/ci/yaml/index.html#stages
+#
+# You can copy and paste this template into a new `.gitlab-ci.yml` file.
+# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
+#
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
+
+stages:          # List of stages for jobs, and their order of execution
+  - graph_cleanup
+  - cia_analysis
+
+
+graph-create-job:       # This job runs in the build stage, which runs first.
+  stage: graph_cleanup
+  except:
+    variables:
+      - $GITLAB_USER_LOGIN == $BOT_USERNAME
+  only:
+    - merge_requests
+  tags:
+    - cia
+  before_script:
+    - apk add --update curl && rm -rf /var/cache/apk/*
+  script:
+    - echo ${BOT_USERNAME}
+    - echo ${GITLAB_USER_LOGIN}
+    - echo "Deleting the knowledge graph..."
+    - curl -X DELETE http://host.docker.internal:8080/api/knowledgeGraph/master -f
+    - echo "The knowledge graph successfully deleted."
+    - echo "Creating graph for repository..."
+    - curl --request POST -H "Content-Type:application/json" -d '{"projectUrl":"http://127.0.0.1/root/fasten-screw-dashboard.git"}' http://host.docker.internal:8080/api/knowledgeGraph/master -f
+    - echo "The knowledge graph successfully created."
+
+
+
+
+
+analysis-job:       # This job runs in the build stage, which runs first.
+  stage: cia_analysis
+  except:
+    variables:
+      - $GITLAB_USER_LOGIN == $BOT_USERNAME
+  only:
+    - merge_requests
+  tags:
+    - cia
+  before_script:
+    - apk add --update curl && rm -rf /var/cache/apk/*
+  script:
+    - echo "Analyzing change ..."
+    - echo ${CI_COMMIT_REF_NAME}
+    - echo ${BOT_USERNAME}
+    - echo ${GITLAB_USER_LOGIN}
+    - curl --request GET -H "Content-Type:application/json" -d '{"projectUrl":"http://127.0.0.1/root/fasten-screw-dashboard.git","branchName":"'${CI_COMMIT_REF_NAME}'","mergeRequestIid":"'${CI_MERGE_REQUEST_IID}'"}' http://host.docker.internal:8080/api/analyze/all/pipeline -f
+
+
+

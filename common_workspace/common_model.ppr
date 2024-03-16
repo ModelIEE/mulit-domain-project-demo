@@ -1,0 +1,110 @@
+// This file has been generated automatically on 09.11.2023 20.48.04
+ ID FastenScrewDashboard_Model {
+	name: " Model Fasten Screw on Dashboard Use Case"
+	version: 1.0.1
+}
+ 
+// Resources
+ Resource FastenScrewDashboard_Model.drive {
+	name: "Drive"
+	requires: FastenScrewDashboard_Model.transformer
+}
+
+Resource FastenScrewDashboard_Model.electric_screwdriver {
+	name: "Electric Screwdriver"
+	represents: CommonConceptGlossary.cc_electric_screwdriver
+	children: FastenScrewDashboard_Model.bit
+	parents: FastenScrewDashboard_Model.robot
+	requires: FastenScrewDashboard_Model.drive
+	ElectricalConcepts.power_consumption: 1500.0
+	MechanicalConcepts.torque: 125.5
+}
+ 
+Resource FastenScrewDashboard_Model.transformer {
+	name: "Transformer"
+	represents: CommonConceptGlossary.cc_transformer
+	ElectricalConcepts.current_supply: 6.25
+}
+ 
+Resource FastenScrewDashboard_Model.robot_controller {
+	name: "Robot Controller"
+	represents: CommonConceptGlossary.cc_robot_controller
+	children: FastenScrewDashboard_Model.robot
+	AutomationConcepts.motion_acceleration: 0.0
+}
+ 
+Resource FastenScrewDashboard_Model.robot {
+	name: "Robot"
+	represents: CommonConceptGlossary.cc_robot
+	children: FastenScrewDashboard_Model.electric_screwdriver
+	parents: FastenScrewDashboard_Model.robot_controller
+	MechanicalConcepts.pos_accuracy: 0.0
+}
+ 
+Resource FastenScrewDashboard_Model.bit {
+	name: "Bit"
+	represents: CommonConceptGlossary.cc_bit
+	parents: FastenScrewDashboard_Model.electric_screwdriver
+	MechanicalConcepts.bit_type: "PH2"
+}
+ 
+Resource FastenScrewDashboard_Model.screwdriver_controller {
+	name: "Screwdriver Controller"
+	represents: CommonConceptGlossary.cc_screwdriver_controller
+	AutomationConcepts.screw_curve: 100.0
+}
+ 
+// Products
+ Product FastenScrewDashboard_Model.car_body_with_dashboard {
+	name: "Car Body with Dashboard"
+}
+ 
+Product FastenScrewDashboard_Model.car_body_with_screwed_dashboard {
+	name: "Car Body with screwed on Dashboard"
+}
+ 
+// Processes
+ Process FastenScrewDashboard_Model.fasten_screw_measure {
+	name: "Fasten Screw & Measure"
+	represents: CommonConceptGlossary.cc_fasten_screw_measure
+	QualityConcepts.req_torque: 0.0
+	QualityConcepts.req_pos_accuracy: 100.0
+}
+ 
+// Semantic Links
+ Relation FastenScrewDashboard_Model.relation1_robotic {
+	from: FastenScrewDashboard_Model.robot -> MechanicalConcepts.pos_accuracy
+	to: FastenScrewDashboard_Model.robot_controller -> AutomationConcepts.motion_acceleration
+	definition: "P:*:3.04"
+}
+ 
+Relation FastenScrewDashboard_Model.relation2_screwdriver {
+	from: FastenScrewDashboard_Model.electric_screwdriver -> ElectricalConcepts.power_consumption
+	to: FastenScrewDashboard_Model.screwdriver_controller -> AutomationConcepts.screw_curve
+	definition: "P:*:3.04"
+}
+ 
+Relation FastenScrewDashboard_Model.relation3_req_pos_accuracy {
+	from: FastenScrewDashboard_Model.fasten_screw_measure -> QualityConcepts.req_pos_accuracy
+	to: FastenScrewDashboard_Model.robot -> MechanicalConcepts.pos_accuracy
+	definition: "R:=="
+}
+ 
+Relation FastenScrewDashboard_Model.relation4_req_torque {
+	from: FastenScrewDashboard_Model.fasten_screw_measure -> QualityConcepts.req_torque
+	to: FastenScrewDashboard_Model.electric_screwdriver -> MechanicalConcepts.torque
+	definition: "R:=="
+}
+ 
+Relation FastenScrewDashboard_Model.relation5_power {
+	from: FastenScrewDashboard_Model.electric_screwdriver -> ElectricalConcepts.power_consumption
+	to: FastenScrewDashboard_Model.transformer -> ElectricalConcepts.current_supply
+	definition: "P:/:240"
+}
+ 
+Relation FastenScrewDashboard_Model.relation6_screwing_tension {
+	from: FastenScrewDashboard_Model.electric_screwdriver -> MechanicalConcepts.torque
+	to: FastenScrewDashboard_Model.screwdriver_controller -> AutomationConcepts.screw_curve
+	definition: "R:=="
+}
+ 

@@ -1,0 +1,131 @@
+{
+  "name" : "fasten-screw-dashboard",
+  "description" : "",
+  "version" : "0.1.0",
+  "commonWorkspace" : {
+    "name" : "common",
+    "users" : [ ]
+  },
+  "domainWorkspaces" : [ {
+    "name" : "electrical",
+    "users" : [ "sophia.martinez606", "ethan.harris707", "ava.moore808", "benjamin.jackson909"]
+  }, {
+    "name" : "mechanical",
+    "users" : [ "max_mustermann",  "sarah.johnson123", "emily.davis789", "james.anderson505"]
+  }, {
+    "name" : "automation",
+    "users" : ["bob.builder",  "john.smith456", "david.lee303", "olivia.taylor404"]
+  }, {
+    "name" : "quality",
+    "users" : [ "jane.doe", "michael.brown101", "jessica.wilson202"]
+  } ],
+  "statusLabels" : [ ],
+  "domainLabels" : [ ],
+  "users" : [{
+    "gitUserId": 5,
+    "gitUsername": "bob.builder",
+    "username": "bob.builder",
+    "isReviewer": true
+
+    },
+    {
+      "gitUserId": 4,
+      "gitUsername": "jane.doe",
+      "username": "jane.doe",
+      "isReviewer": true
+
+      },
+      {
+        "gitUserId": 3,
+        "gitUsername": "max_mustermann",
+        "username": "max_mustermann",
+        "isReviewer": true
+
+        },
+        {
+          "gitUserId": 1,
+          "gitUsername": "root",
+          "username": "root"
+          },
+          
+            {
+              "gitUsername": "sarah.johnson123",
+              "gitUserId": 13,
+              "username": "sarah.johnson123",
+              "isReviewer": true
+
+            },
+            {
+              "gitUsername": "john.smith456",
+              "gitUserId": 14,
+              "username": "john.smith456",
+              "isReviewer": true
+
+            },
+            {
+              "gitUsername": "emily.davis789",
+              "gitUserId": 15,
+              "username": "emily.davis789",
+              "isReviewer": true
+
+            },
+            {
+              "gitUsername": "michael.brown101",
+              "gitUserId": 16,
+              "username": "michael.brown101",
+              "isReviewer": true
+
+            },
+            {
+              "gitUsername": "jessica.wilson202",
+              "gitUserId": 17,
+              "username": "jessica.wilson202"
+            },
+            {
+              "gitUsername": "david.lee303",
+              "gitUserId": 18,
+              "username": "david.lee303",
+              "isReviewer": true
+
+            },
+            {
+              "gitUsername": "olivia.taylor404",
+              "gitUserId": 19,
+              "username": "olivia.taylor404"
+            },
+            {
+              "gitUsername": "james.anderson505",
+              "gitUserId": 20,
+              "username": "james.anderson505"
+            },
+            {
+              "gitUsername": "sophia.martinez606",
+              "gitUserId": 21,
+              "username": "sophia.martinez606",
+              "isReviewer": true
+
+            },
+            {
+              "gitUsername": "ethan.harris707",
+              "gitUserId": 22,
+              "username": "ethan.harris707",
+              "isReviewer": true
+
+            },
+            {
+              "gitUsername": "ava.moore808",
+              "gitUserId": 23,
+              "username": "ava.moore808",
+              "isReviewer": true
+
+            },
+            {
+              "gitUsername": "benjamin.jackson909",
+              "gitUserId": 24,
+              "username": "benjamin.jackson909"
+            }
+        
+          
+        
+        ]
+}

@@ -1,0 +1,33 @@
+// This domain view was generated automatically on 08.01.2024 20.11.32 from 'FastenScrewDashboard_Model' with version '1.0.1'
+ID MechanicalView {
+	name: "Mechanical Domain Concepts Glossary"
+	version: 1.0.2
+}
+ 
+// Resources
+ Resource FastenScrewDashboard_Model.robot {
+	name: "Robot"
+	represents: CommonConceptGlossary.cc_robot
+	children: FastenScrewDashboard_Model.electric_screwdriver
+	MechanicalConcepts.pos_accuracy: 0.0
+}
+ 
+Resource FastenScrewDashboard_Model.electric_screwdriver {
+	name: "Electric Screwdriver"
+	represents: CommonConceptGlossary.cc_electric_screwdriver
+	children: FastenScrewDashboard_Model.bit
+	parents: FastenScrewDashboard_Model.robot
+	MechanicalConcepts.torque: 125.5
+}
+ 
+Resource FastenScrewDashboard_Model.bit {
+	name: "Bit"
+	represents: CommonConceptGlossary.cc_bit
+	parents: FastenScrewDashboard_Model.electric_screwdriver
+	MechanicalConcepts.bit_type: "PH2"
+}
+ 
+// Products
+ // Processes
+ // Semantic Links
+ 

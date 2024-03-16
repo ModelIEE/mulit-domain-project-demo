@@ -3,23 +3,20 @@ ID AutomationConcepts {
     version: 1.0.0
 }
 
-// Automation Attributes
 Attribute motion_acceleration {
-    name: "motion_accel"
+    name: "motion acceleration"
     defaultValue: 0.0
     type: "Number"
     unit: "V"
 }
 
 Attribute screw_curve {
-    name: "screw_curve"
+    name: "screw curve"
     defaultValue: 0.0
     type: "Number"
-    unit: "V"
+    unit: "x^2"
 }
 
-// View Specific Concepts
-// -----------------------
 Concept c_a_robot_controller {
     name: "Robot Controller"
     attributes: motion_acceleration
@@ -27,13 +24,12 @@ Concept c_a_robot_controller {
 
 Concept c_a_screwdriver_controller {
     name: "Screwdriver Controller"
-    attributes: screw_curve, motion_acceleration
+    attributes: screw_curve
 }
 
-Concept c_a_fasten_screw {
-    name: "Fasten Screw"
-}
 
-Concept c_a_measure_screw {
-    name: "Measure Screw"
+Relation relation_controller {
+    from: c_a_robot_controller -> AutomationConcepts.motion_acceleration
+    to: c_a_screwdriver_controller -> AutomationConcepts.screw_curve
+    definition: "R:=="
 }
